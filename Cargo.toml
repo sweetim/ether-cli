@@ -1,0 +1,17 @@
+[package]
+name = "ether-cli"
+version = "0.1.0"
+edition = "2021"
+description = "a CLI tool for sending ETH to other wallet"
+
+[dependencies]
+alloy = { version = "0.11", features = ["full"] }
+alloy-chains = "0.1.61"
+tokio = { version = "1.43.0", features = ["full"] }
+eyre = "0.6.12"
+prettytable-rs = "^0.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dotenv = "0.15.0"
+clap = { version = "4.5.30", features = ["derive"] }
+
