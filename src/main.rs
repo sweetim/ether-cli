@@ -8,7 +8,7 @@ use alloy::{
 use clap::Parser;
 use dotenv::dotenv;
 use eyre::Result;
-use prettytable::{format, table};
+use prettytable::ptable;
 use serde::{Deserialize, Serialize};
 use std::{env, str::FromStr};
 
@@ -111,7 +111,7 @@ async fn main() -> Result<()> {
     let balance_owner_after = provider.get_balance(owner_wallet_address).await?;
     let balance_to_after = provider.get_balance(to_wallet_address).await?;
 
-    let mut display_table = table!(
+    ptable!(
         [
             "Address",
             "Balance Before (ETH)",
@@ -131,8 +131,6 @@ async fn main() -> Result<()> {
             balance_to_after - balance_to_before
         ]
     );
-    display_table.set_format(*format::consts::FORMAT_NO_LINESEP_WITH_TITLE);
-    display_table.printstd();
 
     Ok(())
 }
